@@ -82,17 +82,17 @@ public class Main {
         float min = Integer.MAX_VALUE;
         Employee targetEmployee = null;
         for (Employee employee : employees) {
-            if (employee != null) {
+            if (employee == null) {
                 continue;
             }
             if (employee.getDepartment() == department && employee.getSalary() < min) {
                 min = employee.getSalary();
                 targetEmployee = employee;
             }
+        }
             if (min == Integer.MAX_VALUE) {
                 throw new IllegalArgumentException("В отделе " + department + " нет работников");
             }
-        }
         return targetEmployee;
     }
 
@@ -100,7 +100,7 @@ public class Main {
         float max = Integer.MIN_VALUE;
         Employee targetEmployee = null;
         for (Employee employee : employees) {
-            if (employee != null) {
+            if (employee == null) {
                 continue;
             }
             if (employee.getDepartment() == department && employee.getSalary() > max) {
@@ -117,7 +117,10 @@ public class Main {
     public static float getTotalSalaryInDepartment(int department) {
         float totalSalary = 0;
         for (Employee employee : employees) {
-            if (employee.getDepartment() == department && employee != null) {
+            if (employee == null) {
+                continue;
+            }
+            if (employee.getDepartment() == department) {
                 totalSalary = totalSalary + employee.getSalary();
             }
         }
@@ -127,7 +130,10 @@ public class Main {
     public static float getAverageSalaryInDepartment(int department) {
         int numberEmployees = 0;
         for (Employee employee : employees) {
-            if (employee.getDepartment() == department && employee != null) {
+            if (employee==null) {
+                continue;
+            }
+            if (employee.getDepartment() == department) {
                 numberEmployees++;
             }
         }
@@ -136,7 +142,10 @@ public class Main {
 
     public static void indexSalaryInDepartment(int indexation, int department) {
         for (Employee employee : employees) {
-            if (employee.getDepartment() == department && employee != null) {
+            if (employee == null) {
+                continue;
+            }
+            if (employee.getDepartment() == department) {
                 employee.setSalary(employee.getSalary() * (1 + indexation / 100));
             }
         }
@@ -144,7 +153,10 @@ public class Main {
 
     public static void getInformationDepartment(int department) {
         for (Employee employee : employees) {
-            if (employee.getDepartment() == department & employee != null) {
+            if (employee == null) {
+                continue;
+            }
+            if (employee.getDepartment() == department) {
                 System.out.println("Сотрудники департамента " + department + ": " + "ФИО: " + employee.getName() + ",Зарплата: " + employee.getSalary());
             }
         }
@@ -152,7 +164,10 @@ public class Main {
 
     public static void sortSalarySmaller(float parameter) {
         for (Employee employee : employees) {
-            if (employee.getSalary() < parameter && employee != null) {
+            if (employee == null) {
+                continue;
+            }
+            if (employee.getSalary() < parameter) {
                 System.out.println("Сотрудник:" + employee.getName() + ", id:" +
                         employee.getId() + ", зарплата:" + employee.getSalary());
             }
@@ -161,7 +176,10 @@ public class Main {
 
     public static void sortSalaryBigger(float parameter) {
         for (Employee employee : employees) {
-            if (employee.getSalary() >= parameter && employee != null) {
+            if (employee == null) {
+                continue;
+            }
+            if (employee.getSalary() >= parameter) {
                 System.out.println("Сотрудник:" + employee.getName() + ", id:" +
                         employee.getId() + ", зарплата:" + employee.getSalary());
             }
